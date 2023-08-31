@@ -7,7 +7,7 @@ let countDown = document.querySelector(".count-down");
 let lastHole;
 let timeUp = false;
 let score = 0;
-let count = 10;
+let timer = 10;
 
 function randomTime(min, max) {
   return Math.round(Math.random() * (max - min) + min);
@@ -40,17 +40,20 @@ function popUpMole() {
 //start game button
 startBtn.addEventListener("click", startGame);
 
+//count down seconds
+function timerSecond() {
+  setInterval(timerSecond, 1000);
+  countDown.innerHTML = timer--;
+}
+
 //start game
 function startGame() {
   scoreBoard.textContent = 0;
   timeUp = false;
   score = 0;
   popUpMole();
-
-  //set time up to true after 10 seconds
+  //game stop after 10s
   setTimeout(() => (timeUp = true), 10000);
-
-  message.innerHTML = "Game Over";
 }
 
 function hitOnHead(e) {
