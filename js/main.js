@@ -1,7 +1,10 @@
 const holes = document.querySelectorAll(".hole");
 const scoreBoard = document.querySelector(".score");
 const moles = document.querySelectorAll(".mole");
+const startBtn = document.querySelector(".start");
 let lastHole;
+let timeUp = false;
+let score = 0;
 
 function randomTime(min, max) {
   return Math.round(Math.random() * (max - min) + min);
@@ -19,8 +22,35 @@ function randomHole(holes) {
   return hole;
 }
 
+//mole pop up
 function popUpMole() {
-  const time = randomTime(20, 1000);
+  const time = randomTime(200, 1000);
   const hole = randomHole(holes);
+  hole.classList.add("up");
+
+  setTimeout(() => {
+    hole.classList.remove("up");
+
+    if (!timeUp) popUpMole();
+  }, time);
 }
-console.log(randomHole(holes));
+//start game button
+startBtn.addEventListener("click", startGame);
+
+//start game
+function startGame() {
+  scoreBoard.textContent = 0;
+  timeUp = false;
+  score = 0;
+  popUpMole();
+
+  //set time up to true after 10 seconds
+  setTimeout(() => (timeUp = true), 10000);
+}
+
+function hitOnHead(e) {
+  if (!e.isTrusted) return;
+  score++;
+  scoreBoard.innerHTML = score;
+}
+moles.forEach((mole) => mole.addEventListener("click", hitOnHead));
