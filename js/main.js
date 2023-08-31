@@ -1,10 +1,13 @@
 const holes = document.querySelectorAll(".hole");
 const scoreBoard = document.querySelector(".score");
 const moles = document.querySelectorAll(".mole");
-const startBtn = document.querySelector(".start");
+const startBtn = document.querySelector(".start-btn");
+const message = document.querySelector(".message");
+let countDown = document.querySelector(".count-down");
 let lastHole;
 let timeUp = false;
 let score = 0;
+let count = 10;
 
 function randomTime(min, max) {
   return Math.round(Math.random() * (max - min) + min);
@@ -46,6 +49,8 @@ function startGame() {
 
   //set time up to true after 10 seconds
   setTimeout(() => (timeUp = true), 10000);
+
+  message.innerHTML = "Game Over";
 }
 
 function hitOnHead(e) {

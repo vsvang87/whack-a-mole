@@ -15,7 +15,7 @@ html {
   
   h1 {
     text-align: center;
-    font-size: 10rem;
+    font-size: 5rem;
     line-height: 1;
     margin-bottom: 0;
   }
@@ -26,7 +26,19 @@ html {
     line-height: 1;
     border-radius: 1rem;
   }
-  
+  .button-div {
+    margin-top: 5rem;
+    text-align: center;
+  }
+  .start-btn {
+    padding: 1rem 2rem;
+    border: none;
+    background: rgb(52, 151, 52);
+    cursor: pointer;
+    color: #fff;
+    border-radius: 50px 50px;
+    font-size: 2rem;
+  }
   .game {
     width: 600px;
     height: 400px;
@@ -43,7 +55,9 @@ html {
   
   .hole:after {
     display: block;
-    background-image: url(../image/dirt.svg) bottom center no-repeat;
+    background-image: url(../image/dirt.svg);
+    background-position: bottom;
+    background-repeat: no-repeat;
     background-size: contain;
     content: '';
     width: 100%;
@@ -54,7 +68,9 @@ html {
   }
   
   .mole {
-    background-image: url(../image/mole.jpg) bottom center no-repeat;
+    background-image: url(../image/mole.jpg);
+    background-position: bottom;
+    background-repeat: no-repeat;
     background-size: 60%;
     position: absolute;
     top: 100%;
